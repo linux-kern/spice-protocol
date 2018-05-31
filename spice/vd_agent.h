@@ -234,6 +234,7 @@ typedef struct SPICE_ATTR_PACKED VDAgentClipboardRelease {
     uint8_t selection;
     uint8_t __reserved[sizeof(uint32_t) - 1 * sizeof(uint8_t)];
 #endif
+    uint8_t dummy_empty_field[0]; /* C/C++ compatibility */
 } VDAgentClipboardRelease;
 
 typedef struct SPICE_ATTR_PACKED VDAgentMaxClipboard {
