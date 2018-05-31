@@ -1,3 +1,13 @@
+Major changes in 0.12.14
+========================
+* add stream-device protocol
+* add SPICE_SURFACE_FLAGS_STREAMING_MODE flag
+* add e2k (Elbrus 2000) architecture
+* add SPICE_MAX_NUM_STREAMS
+* add meson support
+* add bult-ins byte swapping for Visual C++
+* switch to built-ins byte swapping in GCC
+
 Major changes in 0.12.13
 ========================
 * add DISPLAY_PREFERRED_VIDEO_CODEC_TYPE
