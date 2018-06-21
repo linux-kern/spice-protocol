@@ -48,7 +48,7 @@ typedef struct SPICE_ATTR_PACKED ControllerMsg {
 } ControllerMsg;
 
 enum {
-    //extrenal app -> spice client
+    //external app -> spice client
     CONTROLLER_HOST = 1,
     CONTROLLER_PORT,
     CONTROLLER_SPORT,

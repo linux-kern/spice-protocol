@@ -43,7 +43,7 @@ typedef struct SPICE_ATTR_PACKED FrgMenuMsg {
 } FrgMenuMsg;
 
 enum {
-    //extrenal app -> spice client
+    //external app -> spice client
     FOREIGN_MENU_SET_TITLE = 1,
     FOREIGN_MENU_ADD_ITEM,
     FOREIGN_MENU_MODIFY_ITEM,
