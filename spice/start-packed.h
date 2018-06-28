@@ -48,6 +48,7 @@
 #ifdef __GNUC__
 
 #define SPICE_ATTR_PACKED __attribute__ ((__packed__))
+#define SPICE_ATTR_ALIGNED(n) __attribute__ ((__aligned__ (n)))
 
 #ifdef __MINGW32__
 #pragma pack(push,1)
@@ -58,6 +59,7 @@
 #pragma pack(push)
 #pragma pack(1)
 #define SPICE_ATTR_PACKED
+#define SPICE_ATTR_ALIGNED(n) __declspec (align (n))
 #pragma warning(disable:4200)
 #pragma warning(disable:4103)
 

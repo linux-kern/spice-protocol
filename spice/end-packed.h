@@ -32,6 +32,7 @@
 /* See start-packed.h for details */
 
 #undef SPICE_ATTR_PACKED
+#undef SPICE_ATTR_ALIGNED
 
 #if defined(__MINGW32__) || !defined(__GNUC__)
 #pragma pack(pop)

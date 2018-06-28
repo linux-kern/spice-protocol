@@ -253,7 +253,7 @@ SPICE_RING_DECLARE(QXLReleaseRing, uint64_t, QXL_RELEASE_RING_SIZE);
 #define QXL_INTERRUPT_CLIENT_MONITORS_CONFIG  (1 << 5)
 
 /* qxl-1 compat: append only */
-typedef struct SPICE_ATTR_PACKED QXLRam {
+typedef struct SPICE_ATTR_ALIGNED(4) SPICE_ATTR_PACKED QXLRam {
     uint32_t magic;
     uint32_t int_pending;
     uint32_t int_mask;
