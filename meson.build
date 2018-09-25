@@ -8,6 +8,8 @@ project('spice-protocol', 'c',
 
 subdir('spice')
 
+spice_protocol_dep = declare_dependency(include_directories : include_directories('.'))
+
 #
 # spice-protocol.pc generation
 #
