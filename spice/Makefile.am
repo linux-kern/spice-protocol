@@ -7,7 +7,6 @@ spice_protocol_include_HEADERS =		\
 	controller_prot.h			\
 	end-packed.h				\
 	enums.h					\
-	error_codes.h				\
 	foreign_menu_prot.h			\
 	ipc_ring.h				\
 	macros.h				\
