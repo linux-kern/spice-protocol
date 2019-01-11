@@ -1,3 +1,9 @@
+Major changes in 0.12.15
+========================
+* Add support for h265 video codec
+* qxl_dev: Align QXLRam to 4 bytes
+* meson: fix spice-protocol as subproject
+
 Major changes in 0.12.14
 ========================
 * add stream-device protocol
