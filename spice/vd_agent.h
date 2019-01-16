@@ -91,6 +91,7 @@ enum {
     VD_AGENT_CLIENT_DISCONNECTED,
     VD_AGENT_MAX_CLIPBOARD,
     VD_AGENT_AUDIO_VOLUME_SYNC,
+    VD_AGENT_GRAPHICS_DEVICE_INFO,
     VD_AGENT_END_MESSAGE,
 };
 
@@ -248,6 +249,27 @@ typedef struct SPICE_ATTR_PACKED VDAgentAudioVolumeSync {
     uint16_t volume[0];
 } VDAgentAudioVolumeSync;
 
+typedef struct SPICE_ATTR_PACKED VDAgentDeviceDisplayInfo {
+    uint32_t channel_id;
+    uint32_t monitor_id;
+    uint32_t device_display_id;
+    uint32_t device_address_len;
+    uint8_t device_address[0];  // a zero-terminated string
+} VDAgentDeviceDisplayInfo;
+
+
+/* This message contains the mapping of (channel_id, monitor_id) pair to a
+ * "physical" (virtualized) device and its monitor identified by device_address
+ * and device_display_id.
+ *
+ * It's used on the vd_agent to identify the guest monitors for the
+ * mouse_position and monitors_config messages.
+ */
+typedef struct SPICE_ATTR_PACKED VDAgentGraphicsDeviceInfo {
+    uint32_t count;
+    VDAgentDeviceDisplayInfo display_info[0];
+} VDAgentGraphicsDeviceInfo;
+
 enum {
     VD_AGENT_CAP_MOUSE_STATE = 0,
     VD_AGENT_CAP_MONITORS_CONFIG,
@@ -264,6 +286,7 @@ enum {
     VD_AGENT_CAP_MONITORS_CONFIG_POSITION,
     VD_AGENT_CAP_FILE_XFER_DISABLED,
     VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS,
+    VD_AGENT_CAP_GRAPHICS_DEVICE_INFO,
     VD_AGENT_END_CAP,
 };
 
