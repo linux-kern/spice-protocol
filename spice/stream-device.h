@@ -90,6 +90,8 @@ typedef enum StreamMsgType {
     STREAM_TYPE_CURSOR_SET,
     /* guest cursor position */
     STREAM_TYPE_CURSOR_MOVE,
+    /* the graphics device display information message (device address and display id) */
+    STREAM_TYPE_DEVICE_DISPLAY_INFO,
 } StreamMsgType;
 
 typedef enum StreamCapabilities {
@@ -139,6 +141,35 @@ typedef struct StreamMsgFormat {
 typedef struct StreamMsgData {
     uint8_t data[0];
 } StreamMsgData;
+
+/* This message contains information about the graphics device and monitor
+ * belonging to a particular video stream (which maps to a channel) from
+ * the streaming agent.
+ *
+ * The device_address is the hardware address of the device (e.g. PCI),
+ * device_display_id is the id of the monitor on the device.
+ *
+ * The supported device address format is:
+ * "pci/<DOMAIN>/<SLOT>.<FUNCTION>/.../<SLOT>.<FUNCTION>"
+ *
+ * The "pci" identifies the rest of the string as a PCI address. It is the only
+ * supported address at the moment, other identifiers can be introduced later.
+ * <DOMAIN> is the PCI domain, followed by <SLOT>.<FUNCTION> of any PCI bridges
+ * in the chain leading to the device. The last <SLOT>.<FUNCTION> is the
+ * graphics device. All of <DOMAIN>, <SLOT>, <FUNCTION> are hexadecimal numbers
+ * with the following number of digits:
+ *   <DOMAIN>: 4
+ *   <SLOT>: 2
+ *   <FUNCTION>: 1
+ *
+ * Sent from the streaming agent to the server.
+ */
+typedef struct StreamMsgDeviceDisplayInfo {
+    uint32_t stream_id;
+    uint32_t device_display_id;
+    uint32_t device_address_len;
+    uint8_t device_address[0];  // a zero-terminated string
+} StreamMsgDeviceDisplayInfo;
 
 /* Tell to stop current stream and possibly start a new one.
  * This message is sent by the host to the guest.
