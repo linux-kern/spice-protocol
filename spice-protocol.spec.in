@@ -1,7 +1,8 @@
 Name:           spice-protocol
-Version:        0.14.0
+Version:        @VERSION@
 Release:        1%{?dist}
 Summary:        Spice protocol header files
+Group:          Development/Libraries
 # Main headers are BSD, controller / foreign menu are LGPL
 License:        BSD and LGPLv2+
 URL:            https://www.spice-space.org

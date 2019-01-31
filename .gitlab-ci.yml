@@ -3,7 +3,7 @@ image: fedora:latest
 variables:
   DEPS_COMMON: git libtool make python3 python3-six redhat-rpm-config
                python3-pyparsing meson ninja-build gtk-doc glib2-devel
-               gettext gettext-devel bzip2
+               gettext gettext-devel bzip2 rpmlint rpm-build python-unversioned-command
 
 before_script:
 - dnf install -y $DEPS_COMMON
@@ -14,6 +14,8 @@ fedora-autotools:
     - ./autogen.sh
     - make
     - make distcheck
+    - rpmlint -o "NetworkEnabled False" spice-protocol.spec
+    - rpmbuild -ta spice-protocol-*.tar.bz2
 
 fedora-meson:
   script:

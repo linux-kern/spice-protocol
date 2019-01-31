@@ -25,6 +25,7 @@ MAINTAINERCLEANFILES =						\
 EXTRA_DIST =							\
 	README.md						\
 	CHANGELOG.md						\
+	spice-protocol.spec					\
 	meson.build
 
 -include $(top_srcdir)/git.mk
