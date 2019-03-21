@@ -232,6 +232,9 @@ typedef struct SPICE_ATTR_PACKED VDAgentClipboardGrab {
     uint8_t selection;
     uint8_t __reserved[sizeof(uint32_t) - 1 * sizeof(uint8_t)];
 #endif
+#if 0 /* VD_AGENT_CAP_CLIPBOARD_GRAB_SERIAL */
+    uint32_t serial;
+#endif
     uint32_t types[0];
 } VDAgentClipboardGrab;
 
@@ -304,6 +307,7 @@ enum {
     VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS,
     VD_AGENT_CAP_GRAPHICS_DEVICE_INFO,
     VD_AGENT_CAP_CLIPBOARD_NO_RELEASE_ON_REGRAB,
+    VD_AGENT_CAP_CLIPBOARD_GRAB_SERIAL,
     VD_AGENT_END_CAP,
 };
 
