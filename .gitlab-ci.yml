@@ -1,0 +1,22 @@
+image: fedora:latest
+
+variables:
+  DEPS_COMMON: git libtool make python3 python3-six redhat-rpm-config
+               python3-pyparsing meson ninja-build gtk-doc glib2-devel
+               gettext gettext-devel bzip2
+
+before_script:
+- dnf install -y $DEPS_COMMON
+
+fedora-autotools:
+  script:
+    # Run with default options
+    - ./autogen.sh
+    - make
+    - make distcheck
+
+fedora-meson:
+  script:
+    - meson --buildtype=release build-default
+    - ninja -C build-default
+    - ninja -C build-default dist
