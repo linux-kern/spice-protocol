@@ -1,3 +1,15 @@
+Major changes in 0.14.0
+=======================
+* Bumping minor to show that some types and values were removed
+* Regenerate enums.h (from spice.proto) which removes:
+ * SpicePubkeyType;
+ * SpiceTunnelServiceType;
+ * SpiceTunnelIpType;
+ * SPICE_MSG_TUNNEL_* and SPICE_MSGC_TUNNEL_*
+* Add VDAgentGraphicsDeviceInfo message
+* Add StreamMsgGraphicsDeviceInfo message
+* Add padding to SpiceStat structure
+
 Major changes in 0.12.15
 ========================
 * Add support for h265 video codec
