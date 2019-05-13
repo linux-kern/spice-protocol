@@ -275,7 +275,7 @@ typedef struct SPICE_ATTR_ALIGNED(4) SPICE_ATTR_PACKED QXLRam {
 
 } QXLRam;
 
-typedef union QXLReleaseInfo {
+typedef union SPICE_ATTR_PACKED QXLReleaseInfo {
     uint64_t id;      // in
     uint64_t next;    // out
 } QXLReleaseInfo;
