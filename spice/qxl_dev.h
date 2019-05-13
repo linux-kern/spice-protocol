@@ -280,11 +280,6 @@ typedef union SPICE_ATTR_PACKED QXLReleaseInfo {
     uint64_t next;    // out
 } QXLReleaseInfo;
 
-typedef struct QXLReleaseInfoExt {
-    QXLReleaseInfo *info;
-    uint32_t group_id;
-} QXLReleaseInfoExt;
-
 typedef struct  SPICE_ATTR_PACKED QXLDataChunk {
     uint32_t data_size;
     QXLPHYSICAL prev_chunk;
@@ -778,5 +773,10 @@ typedef struct SPICE_ATTR_PACKED QXLMonitorsConfig {
 } QXLMonitorsConfig;
 
 #include <spice/end-packed.h>
+
+typedef struct QXLReleaseInfoExt {
+    QXLReleaseInfo *info;
+    uint32_t group_id;
+} QXLReleaseInfoExt;
 
 #endif /* _H_QXL_DEV */
