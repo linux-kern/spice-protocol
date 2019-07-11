@@ -62,15 +62,34 @@ typedef struct SPICE_ATTR_PACKED VDAgentMessage {
 #define VD_AGENT_CLIPBOARD_MAX_SIZE_ENV "SPICE_CLIPBOARD_MAX_SIZE"
 #endif
 
+
+/*
+ * Messages and types for guest agent.
+ * These messages are sent through the virtio port "com.redhat.spice.0"
+ * (agent <-> server) or embedded in "agent_data" SPICE protocol message in
+ * the "MainChannel" (server <-> client)
+ */
 enum {
+    /* server -> agent */
     VD_AGENT_MOUSE_STATE = 1,
+    /* client -> agent|server.
+     * Acknowledged by the agent using VD_AGENT_REPLY.
+     * See VDAgentMonitorsConfig structure.
+     */
     VD_AGENT_MONITORS_CONFIG,
+    /* agent -> client.
+     * See VDAgentReply structure.
+     */
     VD_AGENT_REPLY,
     /* Set clipboard data (both directions).
      * Message comes with type and data.
      * See VDAgentClipboard structure.
      */
     VD_AGENT_CLIPBOARD,
+    /* client -> agent.
+     * Acknowledged by Windows agent using VD_AGENT_REPLY.
+     * See VDAgentDisplayConfig structure.
+    */
     VD_AGENT_DISPLAY_CONFIG,
     VD_AGENT_ANNOUNCE_CAPABILITIES,
     /* Asks to listen for clipboard changes (both directions).
@@ -254,7 +273,7 @@ typedef struct SPICE_ATTR_PACKED VDAgentDeviceDisplayInfo {
     uint32_t monitor_id;
     uint32_t device_display_id;
     uint32_t device_address_len;
-    uint8_t device_address[0];  // a zero-terminated string
+    uint8_t device_address[0];  /* a zero-terminated string */
 } VDAgentDeviceDisplayInfo;
 
 
@@ -270,6 +289,9 @@ typedef struct SPICE_ATTR_PACKED VDAgentGraphicsDeviceInfo {
     VDAgentDeviceDisplayInfo display_info[0];
 } VDAgentGraphicsDeviceInfo;
 
+
+/* Capabilities definitions
+ */
 enum {
     VD_AGENT_CAP_MOUSE_STATE = 0,
     VD_AGENT_CAP_MONITORS_CONFIG,
