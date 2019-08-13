@@ -740,6 +740,9 @@ typedef struct SPICE_ATTR_PACKED QXLSurfaceId {
 
 typedef struct SPICE_ATTR_PACKED QXLQUICData {
     uint32_t data_size;
+    /* This data for QUIC is a QXLDataChunk.
+     * This differs from QXLBitmap where it's a reference to bitmap data or
+     * a reference to QXLDataChunk */
     uint8_t data[0];
 } QXLQUICData, QXLLZRGBData, QXLJPEGData;
 
