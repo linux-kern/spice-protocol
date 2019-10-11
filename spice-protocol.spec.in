@@ -4,8 +4,8 @@ Release:        1%{?dist}
 Summary:        Spice protocol header files
 # Main headers are BSD, controller / foreign menu are LGPL
 License:        BSD and LGPLv2+
-URL:            http://www.spice-space.org/
-Source0:        http://www.spice-space.org/download/releases/%{name}-%{version}.tar.bz2
+URL:            https://www.spice-space.org
+Source0:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
 %description
