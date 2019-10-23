@@ -1,9 +1,9 @@
 image: fedora:latest
 
 variables:
-  DEPS_COMMON: git libtool make python3 python3-six redhat-rpm-config
-               python3-pyparsing meson ninja-build gtk-doc glib2-devel
-               gettext gettext-devel bzip2 rpmlint rpm-build python-unversioned-command
+  DEPS_COMMON: git libtool make redhat-rpm-config
+               meson ninja-build gtk-doc glib2-devel
+               gettext gettext-devel bzip2 rpmlint rpm-build
 
 before_script:
 - dnf install -y $DEPS_COMMON
