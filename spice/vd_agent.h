@@ -57,12 +57,6 @@ typedef struct SPICE_ATTR_PACKED VDAgentMessage {
 #define VD_AGENT_PROTOCOL 1
 #define VD_AGENT_MAX_DATA_SIZE 2048
 
-#ifdef SPICE_DEPRECATED
-#define VD_AGENT_CLIPBOARD_MAX_SIZE_DEFAULT 1024
-#define VD_AGENT_CLIPBOARD_MAX_SIZE_ENV "SPICE_CLIPBOARD_MAX_SIZE"
-#endif
-
-
 /*
  * Messages and types for guest agent.
  * These messages are sent through the virtio port "com.redhat.spice.0"
