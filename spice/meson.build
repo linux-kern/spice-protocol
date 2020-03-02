@@ -13,7 +13,6 @@ spice_protocol_headers = [
   'stats.h',
   'types.h',
   'vd_agent.h',
-  'vdi_dev.h',
   'stream-device.h',
 ]
 

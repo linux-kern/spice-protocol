@@ -17,7 +17,6 @@ spice_protocol_include_HEADERS =		\
 	stats.h					\
 	types.h					\
 	vd_agent.h				\
-	vdi_dev.h				\
 	stream-device.h				\
 	$(NULL)
 
