@@ -8,17 +8,11 @@ variables:
 before_script:
 - dnf install -y $DEPS_COMMON
 
-fedora-autotools:
-  script:
-    # Run with default options
-    - ./autogen.sh
-    - make
-    - make distcheck
-    - rpmlint -o "NetworkEnabled False" spice-protocol.spec
-    - rpmbuild -ta spice-protocol-*.tar.bz2
-
-fedora-meson:
+fedora:
   script:
     - meson --buildtype=release build-default
     - ninja -C build-default
     - ninja -C build-default dist
+    - rpmlint -o "NetworkEnabled False" build-default/spice-protocol.spec
+    - mkdir -p ~/rpmbuild/SOURCES && cp build-default/meson-dist/spice-protocol*.tar.xz ~/rpmbuild/SOURCES/
+    - rpmbuild -ba build-default/spice-protocol.spec

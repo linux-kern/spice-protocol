@@ -6,7 +6,7 @@ Group:          Development/Libraries
 # Main headers are BSD, controller / foreign menu are LGPL
 License:        BSD and LGPLv2+
 URL:            https://www.spice-space.org
-Source0:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.bz2
+Source0:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 
 %description
@@ -18,11 +18,11 @@ and the para-virtual graphics card QXL.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make DESTDIR=%{buildroot} install
+%meson_install
 
 
 %files
