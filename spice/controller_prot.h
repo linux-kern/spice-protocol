@@ -22,6 +22,10 @@
 #include <spice/types.h>
 #include <spice/start-packed.h>
 
+#ifndef SPICE_DISABLE_DEPRECATED
+#error "This SPICE interface is deprecated"
+#endif
+
 #define CONTROLLER_MAGIC      SPICE_MAGIC_CONST("CTRL")
 #define CONTROLLER_VERSION    1
 
