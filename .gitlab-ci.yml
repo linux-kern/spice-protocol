@@ -1,7 +1,7 @@
 image: fedora:latest
 
 variables:
-  DEPS_COMMON: git libtool make redhat-rpm-config
+  DEPS_COMMON: git gcc redhat-rpm-config
                meson ninja-build gtk-doc glib2-devel
                gettext gettext-devel bzip2 rpmlint rpm-build
 
@@ -10,9 +10,15 @@ before_script:
 
 fedora:
   script:
+    # build project and distribution
     - meson --buildtype=release build-default
     - ninja -C build-default
     - ninja -C build-default dist
-    - rpmlint -o "NetworkEnabled False" build-default/spice-protocol.spec
-    - mkdir -p ~/rpmbuild/SOURCES && cp build-default/meson-dist/spice-protocol*.tar.xz ~/rpmbuild/SOURCES/
-    - rpmbuild -ba build-default/spice-protocol.spec
+    # check SPEC file
+    - rpmlint -o "NetworkEnabled False" spice-protocol.spec
+    # check the SPEC version and project (in meson.build) are the same
+    - "VER_SPEC=$(sed '/^Version:/!d; s/.*: \\+//' < spice-protocol.spec)"
+    - "VER_PROJECT=$(sed '/version/ { s/.*'\\''\\(.*\\)'\\''.*/\\1/; q }; d' < meson.build)"
+    - "test \"x$VER_SPEC\" = \"x$VER_PROJECT\""
+    # build RPM from tarball generate
+    - rpmbuild -ta build-default/meson-dist/spice-protocol*.tar.xz

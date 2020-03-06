@@ -1,5 +1,5 @@
 Name:           spice-protocol
-Version:        @VERSION@
+Version:        0.14.2
 Release:        1%{?dist}
 Summary:        Spice protocol header files
 Group:          Development/Libraries
@@ -8,6 +8,7 @@ License:        BSD and LGPLv2+
 URL:            https://www.spice-space.org
 Source0:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.xz
 BuildArch:      noarch
+BuildRequires:  meson gcc
 
 %description
 Header files describing the spice protocol

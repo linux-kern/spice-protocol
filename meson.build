@@ -1,7 +1,7 @@
 #
 # project definition
 #
-project('spice-protocol', 'c',
+project('spice-protocol',
         version : '0.14.2',
         license : 'BSD',
         meson_version : '>= 0.41.0')
@@ -23,12 +23,3 @@ pkgconfig.generate(name : meson.project_name(),
                    subdirs : 'spice-1',
                    install_dir : pkgconfig_dir,
                    variables : 'datadir=@0@'.format(join_paths('${prefix}', datadir)))
-
-#
-# spice-protocol.spec
-#
-config_data = configuration_data()
-config_data.set ('VERSION', meson.project_version())
-configure_file(input : 'spice-protocol.spec.in',
-               output : 'spice-protocol.spec',
-               configuration : config_data)
