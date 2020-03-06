@@ -1,3 +1,21 @@
+Major changes in 0.14.1
+=======================
+* This is the last release with:
+  * Autotools: Meson is now the only supported
+  * foreign_menu_prot.h: Deprecated in this release
+  * controller_prot.h: Deprecated in this release
+* Add VD_AGENT_CAP_CLIPBOARD_NO_RELEASE_ON_REGRAB
+* Add VD_AGENT_CAP_CLIPBOARD_GRAB_SERIAL
+* Add SPICE_MSGC_MAIN_QUALITY_INDICATOR enum
+* Add STREAM_TYPE_QUALITY_INDICATOR message
+* Remove deprecated vdi_dev.h interface
+* Remove deprecated VD_AGENT_CLIPBOARD_MAX_SIZE_DEFAULT
+* Remove deprecated VD_AGENT_CLIPBOARD_MAX_SIZE_ENV
+* Remove unused SPICE_GNUC_ macros
+* qxl_dev: QXLReleaseInfo alignment fix
+* Some documentation added in vd_agentd.h
+* Now shipping a rpm spec file to easy deployment and testing
+
 Major changes in 0.14.0
 =======================
 * Bumping minor to show that some types and values were removed
