@@ -30,5 +30,5 @@ pkgconfig.generate(name : meson.project_name(),
 config_data = configuration_data()
 config_data.set ('VERSION', meson.project_version())
 configure_file(input : 'spice-protocol.spec.in',
-               output : 'spice-protcol.spec',
+               output : 'spice-protocol.spec',
                configuration : config_data)
