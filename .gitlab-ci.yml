@@ -4,6 +4,7 @@ variables:
   DEPS_COMMON: git gcc redhat-rpm-config
                meson ninja-build gtk-doc glib2-devel
                gettext gettext-devel bzip2 rpmlint rpm-build
+               mingw32-filesystem mingw64-filesystem
 
 before_script:
 - dnf install -y $DEPS_COMMON

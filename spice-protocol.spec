@@ -8,11 +8,28 @@ URL:            https://www.spice-space.org
 Source0:        https://www.spice-space.org/download/releases/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 BuildRequires:  meson gcc
+BuildRequires:  mingw32-filesystem >= 95
+BuildRequires:  mingw64-filesystem >= 95
 
-%description
-Header files describing the spice protocol
+%define desc Header files describing the spice protocol \
 and the para-virtual graphics card QXL.
 
+%description
+%{desc}
+
+%package -n mingw32-spice-protocol
+Summary:        %{summary}
+Requires:       mingw32-pkg-config
+
+%description -n mingw32-spice-protocol
+%{desc}
+
+%package -n mingw64-spice-protocol
+Summary:        %{summary}
+Requires:       mingw64-pkg-config
+
+%description -n mingw64-spice-protocol
+%{desc}
 
 %prep
 %setup -q
@@ -21,14 +38,29 @@ and the para-virtual graphics card QXL.
 %meson
 %meson_build
 
+%mingw_meson
+%mingw_ninja
+
+
 %install
 %meson_install
+%mingw_ninja_install
 
 
 %files
 %doc COPYING CHANGELOG.md
 %{_includedir}/spice-1
 %{_datadir}/pkgconfig/spice-protocol.pc
+
+%files -n mingw32-spice-protocol
+%doc COPYING CHANGELOG.md
+%{mingw32_includedir}/spice-1
+%{mingw32_datadir}/pkgconfig/spice-protocol.pc
+
+%files -n mingw64-spice-protocol
+%doc COPYING CHANGELOG.md
+%{mingw64_includedir}/spice-1
+%{mingw64_datadir}/pkgconfig/spice-protocol.pc
 
 
 %changelog
