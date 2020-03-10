@@ -1,9 +1,7 @@
 spice_protocol_headers = [
   'barrier.h',
-  'controller_prot.h',
   'end-packed.h',
   'enums.h',
-  'foreign_menu_prot.h',
   'ipc_ring.h',
   'macros.h',
   'protocol.h',
