@@ -126,6 +126,7 @@ typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusMessage {
     * to clients with VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS capability.
     * Type of data varies with the result:
     * result : data type (NULL if no data)
+    * VD_AGENT_FILE_XFER_STATUS_ERROR : VDAgentFileXferStatusError
     * VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE : uint64_t
     * VD_AGENT_FILE_XFER_STATUS_SESSION_LOCKED : NULL
     * VD_AGENT_FILE_XFER_STATUS_VDAGENT_NOT_CONNECTED : NULL
@@ -133,6 +134,27 @@ typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusMessage {
     */
    uint8_t data[0];
 } VDAgentFileXferStatusMessage;
+
+enum {
+    /* Error number is a G_IO_ERROR_xxx defined in
+     * https://developer.gnome.org/gio/stable/gio-GIOError.html
+     */
+    VD_AGENT_FILE_XFER_STATUS_ERROR_GLIB_IO,
+};
+
+/* Detailed error for VD_AGENT_FILE_XFER_STATUS_ERROR.
+ * Only present if VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS is
+ * negotiated and the size of the message can contain it.
+ * Otherwise a generic error should be assumed and reported.
+ */
+typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusError {
+    /* One of VD_AGENT_FILE_XFER_STATUS_ERROR_xxx enumeration
+     */
+    uint8_t error_type;
+    /* An error code which enumeration depends on error_type
+     */
+    uint32_t error_code;
+} VDAgentFileXferStatusError;
 
 typedef struct SPICE_ATTR_PACKED VDAgentFileXferStartMessage {
    uint32_t id;
