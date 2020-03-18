@@ -64,7 +64,9 @@ typedef struct SPICE_ATTR_PACKED VDAgentMessage {
  * the "MainChannel" (server <-> client)
  */
 enum {
-    /* server -> agent */
+    /* server -> agent
+     * See VDAgentMouseState structure.
+     */
     VD_AGENT_MOUSE_STATE = 1,
     /* client -> agent|server.
      * Acknowledged by the agent using VD_AGENT_REPLY.
@@ -85,6 +87,7 @@ enum {
      * See VDAgentDisplayConfig structure.
     */
     VD_AGENT_DISPLAY_CONFIG,
+    /* See VDAgentAnnounceCapabilities structure. */
     VD_AGENT_ANNOUNCE_CAPABILITIES,
     /* Asks to listen for clipboard changes (both directions).
      * Remote should empty clipboard and wait for one
@@ -97,13 +100,21 @@ enum {
      * See VDAgentClipboardRequest structure.
      */
     VD_AGENT_CLIPBOARD_REQUEST,
+    /* See VDAgentClipboardRelease structure. */
     VD_AGENT_CLIPBOARD_RELEASE,
+    /* See VDAgentFileXferStartMessage structure. */
     VD_AGENT_FILE_XFER_START,
+    /* See VDAgentFileXferStatusMessage structure. */
     VD_AGENT_FILE_XFER_STATUS,
+    /* See VDAgentFileXferDataMessage structure. */
     VD_AGENT_FILE_XFER_DATA,
+    /* Empty message */
     VD_AGENT_CLIENT_DISCONNECTED,
+    /* See VDAgentMaxClipboard structure. */
     VD_AGENT_MAX_CLIPBOARD,
+    /* See VDAgentAudioVolumeSync structure. */
     VD_AGENT_AUDIO_VOLUME_SYNC,
+    /* See VDAgentGraphicsDeviceInfo structure. */
     VD_AGENT_GRAPHICS_DEVICE_INFO,
     VD_AGENT_END_MESSAGE,
 };
