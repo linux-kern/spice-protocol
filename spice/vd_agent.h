@@ -127,13 +127,22 @@ typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusMessage {
     * Type of data varies with the result:
     * result : data type (NULL if no data)
     * VD_AGENT_FILE_XFER_STATUS_ERROR : VDAgentFileXferStatusError
-    * VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE : uint64_t
+    * VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE : VDAgentFileXferStatusNotEnoughSpace
     * VD_AGENT_FILE_XFER_STATUS_SESSION_LOCKED : NULL
     * VD_AGENT_FILE_XFER_STATUS_VDAGENT_NOT_CONNECTED : NULL
     * VD_AGENT_FILE_XFER_STATUS_DISABLED : NULL
     */
    uint8_t data[0];
 } VDAgentFileXferStatusMessage;
+
+/* Detailed error for VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE.
+ * Only present if VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS is
+ * negotiated and the size of the message can contain it.
+ */
+typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusNotEnoughSpace {
+    /* Disk free space in bytes. */
+    uint64_t disk_free_space;
+} VDAgentFileXferStatusNotEnoughSpace;
 
 enum {
     /* Error number is a G_IO_ERROR_xxx defined in
