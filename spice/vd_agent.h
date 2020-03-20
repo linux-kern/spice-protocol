@@ -120,19 +120,19 @@ enum {
 };
 
 typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusMessage {
-   uint32_t id;
-   uint32_t result;
-   /* Used to send additional data for detailed error messages
-    * to clients with VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS capability.
-    * Type of data varies with the result:
-    * result : data type (NULL if no data)
-    * VD_AGENT_FILE_XFER_STATUS_ERROR : VDAgentFileXferStatusError
-    * VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE : VDAgentFileXferStatusNotEnoughSpace
-    * VD_AGENT_FILE_XFER_STATUS_SESSION_LOCKED : NULL
-    * VD_AGENT_FILE_XFER_STATUS_VDAGENT_NOT_CONNECTED : NULL
-    * VD_AGENT_FILE_XFER_STATUS_DISABLED : NULL
-    */
-   uint8_t data[0];
+    uint32_t id;
+    uint32_t result;
+    /* Used to send additional data for detailed error messages
+     * to clients with VD_AGENT_CAP_FILE_XFER_DETAILED_ERRORS capability.
+     * Type of data varies with the result:
+     * result : data type (NULL if no data)
+     * VD_AGENT_FILE_XFER_STATUS_ERROR : VDAgentFileXferStatusError
+     * VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE : VDAgentFileXferStatusNotEnoughSpace
+     * VD_AGENT_FILE_XFER_STATUS_SESSION_LOCKED : NULL
+     * VD_AGENT_FILE_XFER_STATUS_VDAGENT_NOT_CONNECTED : NULL
+     * VD_AGENT_FILE_XFER_STATUS_DISABLED : NULL
+     */
+    uint8_t data[0];
 } VDAgentFileXferStatusMessage;
 
 /* Detailed error for VD_AGENT_FILE_XFER_STATUS_NOT_ENOUGH_SPACE.
@@ -166,14 +166,14 @@ typedef struct SPICE_ATTR_PACKED VDAgentFileXferStatusError {
 } VDAgentFileXferStatusError;
 
 typedef struct SPICE_ATTR_PACKED VDAgentFileXferStartMessage {
-   uint32_t id;
-   uint8_t data[0];
+    uint32_t id;
+    uint8_t data[0];
 } VDAgentFileXferStartMessage;
 
 typedef struct SPICE_ATTR_PACKED VDAgentFileXferDataMessage {
-   uint32_t id;
-   uint64_t size;
-   uint8_t data[0];
+    uint32_t id;
+    uint64_t size;
+    uint8_t data[0];
 } VDAgentFileXferDataMessage;
 
 typedef struct SPICE_ATTR_PACKED VDAgentMonConfig {
