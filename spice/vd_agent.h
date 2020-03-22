@@ -325,7 +325,11 @@ typedef struct SPICE_ATTR_PACKED VDAgentDeviceDisplayInfo {
  */
 typedef struct SPICE_ATTR_PACKED VDAgentGraphicsDeviceInfo {
     uint32_t count;
+#ifdef _MSC_VER
+    uint8_t display_info[0];
+#else
     VDAgentDeviceDisplayInfo display_info[0];
+#endif
 } VDAgentGraphicsDeviceInfo;
 
 
