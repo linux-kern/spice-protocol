@@ -47,9 +47,12 @@ typedef struct SPICE_ATTR_PACKED VDIChunkHeader {
 } VDIChunkHeader;
 
 typedef struct SPICE_ATTR_PACKED VDAgentMessage {
+    /* Should be VD_AGENT_PROTOCOL */
     uint32_t protocol;
+    /* One of VD_AGENT_xxx in the enumeration below */
     uint32_t type;
     uint64_t opaque;
+    /* Size of data following */
     uint32_t size;
     uint8_t data[0];
 } VDAgentMessage;
