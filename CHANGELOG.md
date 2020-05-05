@@ -1,3 +1,12 @@
+Major changes in 0.14.2
+=======================
+* Removed Autoconf support, only Meson is available
+* Removed foreign-menu and controller interfaces
+* Deprecated CELT support
+* Generate MingW packages building the RPM
+* Allows for the agent to pass back a more specific error to the client
+* Add quality indicators messages
+
 Major changes in 0.14.1
 =======================
 * This is the last release with:
