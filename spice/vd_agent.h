@@ -264,6 +264,12 @@ enum {
     VD_AGENT_CLIPBOARD_IMAGE_BMP,  /* optional */
     VD_AGENT_CLIPBOARD_IMAGE_TIFF, /* optional */
     VD_AGENT_CLIPBOARD_IMAGE_JPG,  /* optional */
+    /* identifies a list of absolute paths in phodav server
+     * that is associated with the "org.spice-space.webdav.0" webdav channel;
+     * the items are encoded in UTF-8 and separated by '\0';
+     * the first item must be either "copy" or "cut" (without the quotes)
+     * to indicate what action should be performed with the files that follow */
+    VD_AGENT_CLIPBOARD_FILE_LIST,
 };
 
 enum {
