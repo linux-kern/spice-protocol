@@ -44,7 +44,8 @@ Requires:       mingw64-pkg-config
 
 %install
 %meson_install
-%mingw_ninja_install
+export DESTDIR=%{buildroot}
+%mingw_ninja install
 
 
 %files
