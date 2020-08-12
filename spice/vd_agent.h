@@ -205,13 +205,29 @@ typedef struct SPICE_ATTR_PACKED VDAgentMonConfig {
 
 enum {
     VD_AGENT_CONFIG_MONITORS_FLAG_USE_POS = (1 << 0),
+    VD_AGENT_CONFIG_MONITORS_FLAG_PHYSICAL_SIZE = (1 << 1),
 };
 
 typedef struct SPICE_ATTR_PACKED VDAgentMonitorsConfig {
     uint32_t num_of_monitors;
     uint32_t flags;
     VDAgentMonConfig monitors[0];
+    /* only sent if the FLAG_PHYSICAL_SIZE is present: */
+    /* VDAgentMonitorMM physical_sizes[0]; */
 } VDAgentMonitorsConfig;
+
+
+/* Physical size of the monitor in millimeters.
+ * Having this information, the remote/guest display can configure itself with
+ * appropriate font & scaling to maintain readability. */
+typedef struct SPICE_ATTR_PACKED VDAgentMonitorMM {
+    /*
+     * Note a width and height of 0 can be used to indicate a disabled
+     * monitor or no size information is present.
+     */
+    uint16_t height;
+    uint16_t width;
+} VDAgentMonitorMM;
 
 enum {
     VD_AGENT_DISPLAY_CONFIG_FLAG_DISABLE_WALLPAPER = (1 << 0),
