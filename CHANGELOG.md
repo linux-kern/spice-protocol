@@ -1,3 +1,11 @@
+Major changes in 0.14.3
+=======================
+* Add VD_AGENT_CLIPBOARD_FILE_LIST to support copy/paste of files with
+  WebDAV support
+* Add support for side mouse buttons
+* Add a MonitorsMM field to VDAgentMonitorsConfig allowing to pass
+  physical monitor dimension
+
 Major changes in 0.14.2
 =======================
 * Removed Autoconf support, only Meson is available
