@@ -1,5 +1,5 @@
 Name:           spice-protocol
-Version:        0.14.3
+Version:        0.14.4
 Release:        1%{?dist}
 Summary:        Spice protocol header files
 Group:          Development/Libraries
