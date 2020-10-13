@@ -72,6 +72,14 @@
 #define SPICE_GNUC_DEPRECATED
 #endif
 
+#if ((defined(__GNUC__) && (__GNUC__ > 6 || (__GNUC__ == 6 && __GNUC_MINOR__ >= 1))) || \
+     (defined(__clang_major__) && (__clang_major__ > 3 || \
+      (__clang_major__ == 3 && __clang_minor__ >= 0))))
+#define SPICE_GNUC_DEPRECATED_ENUMERATOR SPICE_GNUC_DEPRECATED
+#else
+#define SPICE_GNUC_DEPRECATED_ENUMERATOR
+#endif
+
 #if     __GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 3)
 #  define SPICE_GNUC_MAY_ALIAS __attribute__((may_alias))
 #else
