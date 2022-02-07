@@ -1,3 +1,8 @@
+Major changes in 0.14.4
+=======================
+* Fix enum deprecation warning for visual studio
+* Fix documentation typos in stream-device.h
+
 Major changes in 0.14.3
 =======================
 * Add VD_AGENT_CLIPBOARD_FILE_LIST to support copy/paste of files with
