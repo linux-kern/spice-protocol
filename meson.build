@@ -2,7 +2,7 @@
 # project definition
 #
 project('spice-protocol',
-        version : '0.14.4',
+        version : '0.14.5',
         license : 'BSD',
         meson_version : '>= 0.41.0')
 
